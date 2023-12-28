@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- https://mybatis.org/mybatis-3/getting-started.html-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sb01.mapper.BoardMapper">
+    <select id="totalCount" resultType="int">
+        select count(*) from tbl_board
+    </select>
+    <select id="getList" resultType="com.example.sb01.dto.BoardDTO">
+        select * from tbl_board order by bno desc
+    </select>
+    <insert id="insert">
+        insert into tbl_board(title, content, writer, postdate)
+        values (#{title}, #{content}, #{writer}, #{postdate})
+    </insert>
+    <select id="getBoard" resultType="com.example.sb01.dto.BoardDTO">
+        select * from tbl_board where bno = #{bno}
+    </select>
+    <update id="update">
+        update tbl_board set title = #{title}, content = #{content} where bno = #{bno}
+    </update>
+    <update id="updateVisitcount">
+        update tbl_board set visitcount = visitcount + 1 where bno = #{bno}
+    </update>
+    <delete id="delete">
+        delete from tbl_board where bno = #{bno}
+    </delete>
+</mapper>
