@@ -65,14 +65,14 @@
                         <div th:if="${#strings.isEmpty(mediaFormDTO.eid)}"
                              style="text-align: center">
                             <button th:formaction="${'/media/mediaRegister'}" type="submit"
-                                    class="btn btn-primary">등록
+                                    class="btn btn-primary" id="reg">등록
                             </button>
                         </div>
 
                         <div th:unless="${#strings.isEmpty(mediaFormDTO.eid)}"
                              style="text-align: center">
-                            <button th:formaction="${'/media/mediaRegister/' + ${mediaFormDTO.eid}}"
-                                    type="submit" class="btn btn-primary">수정
+                            <button th:formaction="${'/media/mediaRegister/' + eid}"
+                                    type="submit" class="btn btn-primary" id="mod">수정
                             </button>
                         </div>
 
@@ -87,7 +87,13 @@
 </html>
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 <script th:inline="javascript">
+
+    $(".btn-info").on("click", function () {
+        location.href = "/media/medialist";
+    });
+
     $(document).ready(function () {
         var errorMessage = [[${errorMessage}]];
         if (errorMessage != null) {
@@ -105,7 +111,7 @@
                 alert("이미지 파일만 등록이 가능합니다.");
                 return;
             }
-            $(this).siblings(".custom-file-label").html(fileName);
+            $(this).siblings(".custom-file-label").html(fileName); 
         });
     }
 </script>

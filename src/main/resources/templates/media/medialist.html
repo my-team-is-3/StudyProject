@@ -3,6 +3,8 @@
       xmlns:th="http://www.thymeleaf.org"
       layout:decorate="~{layout/layout1}">
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
 <div layout:fragment="content">
     <style>
         .TLQKF {
@@ -44,7 +46,7 @@
                                 <a id="play-video" class="video-play-button" th:href="@{${mediainfos.getKey().elink}}" data-fancybox>
                                     <span></span>
                                 </a>
-                                <a href="#" class="TLQKF"><img th:src="${mediainfos.getValue()}" alt="Image" class="img-fluid media_img"></a>
+                                <a th:href="|@{${mediainfos.getKey().elink}}|" class="TLQKF"><img th:src="${mediainfos.getValue()}" alt="Image" class="img-fluid media_img"></a>
                             </figure>
                             <div class="d-flex">
                                 <div>
@@ -60,4 +62,15 @@
         </div>
     </div>
 </div>
+
+<div class="text-center">
+    <button type="button" id="reg" class="btn btn-primary">글쓰기</button>
+</div>
+
+<script>
+    $("#reg").on("click", function () {
+        location.href = "/media/mediaRegister";
+    });
+</script>
 </html>
+
