@@ -82,7 +82,7 @@ public class MediaInfoController {
             return "/media/mediaRegister";
         }
 
-        return "redirect:/";
+        return "redirect:/media/medialist";
     }
 
     @GetMapping("/mediaRegister/{eid}")
